@@ -1,26 +1,63 @@
-import { createRouter, createWebHashHistory, RouteRecordRaw } from "vue-router";
-import Home from "../views/Home.vue";
-
-const routes: Array<RouteRecordRaw> = [
-  {
-    path: "/",
-    name: "Home",
-    component: Home,
-  },
-  {
-    path: "/about",
-    name: "About",
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () =>
-      import(/* webpackChunkName: "about" */ "../views/About.vue"),
-  },
-];
+import { createRouter, createWebHashHistory } from 'vue-router'
 
 const router = createRouter({
   history: createWebHashHistory(),
-  routes,
-});
+  routes: [
+    {
+      name: '/',
+      path: '/',
+      redirect: '/home'
+    },
+    {
+      name: 'home',
+      path: '/home',
+      component: () =>
+        import(/* webpackChunkName: "home-chunk" */ '@/views/bill/Home.vue')
+    },
+    {
+      name: 'statistic',
+      path: '/statistic',
+      component: () =>
+        import(
+          /* webpackChunkName: "statistic-chunk" */ '@/views/Statistic.vue'
+        )
+    },
+    {
+      name: 'user',
+      path: '/user',
+      component: () =>
+        import(/* webpackChunkName: "user-chunk" */ '@/views/user/User.vue')
+    },
+    {
+      name: 'modifyPassword',
+      path: '/modifyPassword',
+      component: () =>
+        import(
+          /* webpackChunkName: "modifyPassword-chunk" */ '@/views/user/ModifyPassword.vue'
+        )
+    },
+    {
+      name: 'about',
+      path: '/about',
+      component: () =>
+        import(/* webpackChunkName: "about-chunk" */ '@/views/user/About.vue')
+    },
+    {
+      name: 'login',
+      path: '/login',
+      component: () =>
+        import(/* webpackChunkName: "login-chunk" */ '@/views/Login.vue')
+    },
 
-export default router;
+    {
+      name: 'detail',
+      path: '/detail',
+      component: () =>
+        import(
+          /* webpackChunkName: "billDetail-chunk" */ '@/views/bill/BillDetail.vue'
+        )
+    }
+  ]
+})
+
+export default router
