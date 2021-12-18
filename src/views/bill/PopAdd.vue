@@ -580,7 +580,7 @@ export default {
   }
   .van-field__clear {
     position: absolute;
-    right: 16%;
+    right: 8%;
   }
   .van-field__word-limit {
     position: absolute;
